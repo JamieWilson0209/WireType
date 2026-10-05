@@ -95,9 +95,11 @@ malecns_v1.0/body-neurotransmitters-v1.0.feather
 - **MCNS v1.0** (Berg et al. 2026): the static download in the Google bucket
   `gs://flyem-male-cns` (landing page https://male-cns.janelia.org). Licence CC BY 4.0.
 
-**Released outputs.** The checkpoints, reports, predictions, embeddings, training labels
-and fitted probes behind the paper are archived on Zenodo (doi: [TBD]) under CC BY-NC
-4.0. Unpacked into `experiments/`, they let the analyses below run without retraining.
+**Released outputs.** WireType's prediction tables for both volumes and the paper's FAFB
+splits are on Zenodo (doi: [TBD]) under CC BY-NC 4.0; the record's description defines
+every column. A later version of the record will add the checkpoints, reports,
+embeddings, training labels and fitted probes; unpacked into `experiments/`, they let the
+analyses below run without retraining.
 
 ## Running the pipeline
 
@@ -126,9 +128,18 @@ qsub -v VOLUME=fafb,K=64 hpc/jobs/topk.sh
 ```
 
 `splits.sh` does not reproduce the paper's FAFB type-blocked split, which was drawn with an
-earlier default (`src/wiretype/data/splits.py`). To reproduce the paper's runs, put the
-released `fafb_splits.parquet` (Zenodo) at `data/processed/fafb_splits.parquet` after
-stage 2.
+earlier default (`src/wiretype/data/splits.py`). To reproduce the paper's runs, replace
+its output with the released `fafb_splits.parquet` (Zenodo) after stage 2, keyed by
+`node_id`:
+
+```python
+import pandas as pd
+released = pd.read_parquet("fafb_splits.parquet")  # from Zenodo
+nodes = pd.read_parquet("data/processed/fafb_nodes.parquet", columns=["node_id", "source_id"])
+split = nodes.merge(released, left_on="source_id", right_on="flywire_root_id_v783")
+split = split.rename(columns={"split_type_blocked": "split"})[["node_id", "split", "split_random"]]
+split.to_parquet("data/processed/fafb_splits.parquet", index=False)
+```
 
 Stages 5–8 for every run in the paper are submitted by one script, with holds between
 dependent jobs; its header lists what each group submits:
