@@ -1,0 +1,48 @@
+family	feature	kept	definition
+degree	logDout@1	no: removed at step 7 of 16, R² = 0.9903 from the remaining features	log(1 + number of output partners joined by at least 1 synapse)
+degree	logDin@1	no: removed at step 6 of 16, R² = 0.9937 from the remaining features	log(1 + number of input partners joined by at least 1 synapse)
+degree	logDout@3	no: removed at step 15 of 16, R² = 0.9771 from the remaining features	log(1 + number of output partners joined by at least 3 synapses)
+degree	logDin@3	no: removed at step 13 of 16, R² = 0.9824 from the remaining features	log(1 + number of input partners joined by at least 3 synapses)
+degree	logDout@5	yes	log(1 + number of output partners joined by at least 5 synapses)
+degree	logDin@5	yes	log(1 + number of input partners joined by at least 5 synapses)
+degree	logSynOut	no: removed at step 2 of 16, R² = 0.9998 from the remaining features	log(1 + total output synapses)
+degree	logSynIn	no: removed at step 1 of 16, R² = 0.9998 from the remaining features	log(1 + total input synapses)
+connection weight	fracW1_out	yes	share of the neuron's output connections that have exactly one synapse
+connection weight	fracGeP75_out	yes	share of the neuron's output connections with at least as many synapses as the volume's 75th percentile of connection weight (percentile over all connections of that volume)
+connection weight	fracGeP90_out	yes	as fracGeP75, at the volume's 90th percentile
+connection weight	logMeanW_out	yes	log(1 + mean synapses per output connection)
+connection weight	cv_out	yes	coefficient of variation (standard deviation / mean) of synapses per output connection
+connection weight	herfindahl_out	yes	Herfindahl concentration of output synapses over connections: sum of squared synapse counts / (total synapses)^2
+connection weight	topShare_out	no: removed at step 12 of 16, R² = 0.9825 from the remaining features	strongest output connection's share of the neuron's output synapses
+connection weight	meanLogW_out	no: removed at step 9 of 16, R² = 0.9859 from the remaining features	mean of log(1 + synapses) over output connections
+connection weight	fracW1_in	yes	share of the neuron's input connections that have exactly one synapse
+connection weight	fracGeP75_in	yes	share of the neuron's input connections with at least as many synapses as the volume's 75th percentile of connection weight (percentile over all connections of that volume)
+connection weight	fracGeP90_in	yes	as fracGeP75, at the volume's 90th percentile
+connection weight	logMeanW_in	no: removed at step 14 of 16, R² = 0.9773 from the remaining features	log(1 + mean synapses per input connection)
+connection weight	cv_in	yes	coefficient of variation (standard deviation / mean) of synapses per input connection
+connection weight	herfindahl_in	yes	Herfindahl concentration of input synapses over connections: sum of squared synapse counts / (total synapses)^2
+connection weight	topShare_in	no: removed at step 11 of 16, R² = 0.9839 from the remaining features	strongest input connection's share of the neuron's input synapses
+connection weight	meanLogW_in	yes	mean of log(1 + synapses) over input connections
+random-walk return	rwse_2	yes	probability that a random walk starting at the neuron is back at it after 2 steps; the walk ignores direction and steps to a partner with probability proportional to synapses; computed exactly by propagating blocks of unit vectors; entered as log(1 + 10^4 p). The one-step return is always 0 (no self-connections) and is not a candidate
+random-walk return	rwse_3	yes	probability that a random walk starting at the neuron is back at it after 3 steps; the walk ignores direction and steps to a partner with probability proportional to synapses; computed exactly by propagating blocks of unit vectors; entered as log(1 + 10^4 p). The one-step return is always 0 (no self-connections) and is not a candidate
+random-walk return	rwse_4	no: removed at step 8 of 16, R² = 0.9874 from the remaining features	probability that a random walk starting at the neuron is back at it after 4 steps; the walk ignores direction and steps to a partner with probability proportional to synapses; computed exactly by propagating blocks of unit vectors; entered as log(1 + 10^4 p). The one-step return is always 0 (no self-connections) and is not a candidate
+random-walk return	rwse_5	no: removed at step 4 of 16, R² = 0.9978 from the remaining features	probability that a random walk starting at the neuron is back at it after 5 steps; the walk ignores direction and steps to a partner with probability proportional to synapses; computed exactly by propagating blocks of unit vectors; entered as log(1 + 10^4 p). The one-step return is always 0 (no self-connections) and is not a candidate
+random-walk return	rwse_6	no: removed at step 3 of 16, R² = 0.9990 from the remaining features	probability that a random walk starting at the neuron is back at it after 6 steps; the walk ignores direction and steps to a partner with probability proportional to synapses; computed exactly by propagating blocks of unit vectors; entered as log(1 + 10^4 p). The one-step return is always 0 (no self-connections) and is not a candidate
+random-walk return	rwse_7	yes	probability that a random walk starting at the neuron is back at it after 7 steps; the walk ignores direction and steps to a partner with probability proportional to synapses; computed exactly by propagating blocks of unit vectors; entered as log(1 + 10^4 p). The one-step return is always 0 (no self-connections) and is not a candidate
+random-walk return	rwse_8	yes	probability that a random walk starting at the neuron is back at it after 8 steps; the walk ignores direction and steps to a partner with probability proportional to synapses; computed exactly by propagating blocks of unit vectors; entered as log(1 + 10^4 p). The one-step return is always 0 (no self-connections) and is not a candidate
+feed-forward hierarchy	trophic_log1p	yes	trophic level h (MacKay et al., 2020): minimises sum_ij w_ij (h_j − h_i − 1)^2 / sum_ij w_ij over connections i → j, w = log(1 + synapses); centred to zero mean within each weakly connected component; 0 for neurons without connections
+feed-forward hierarchy	springrank_log1p_a1	no: removed at step 10 of 16, R² = 0.9845 from the remaining features	SpringRank s (De Bacco et al., 2018) on the same weights with regularisation alpha = 1; at alpha = 0 it equals −h exactly. Correlation with trophic level r = −0.990 in FAFB, −0.999 in MCNS (experiments/features/flow_*.json)
+local topology	local_recip_frac_out	yes	share of output partners that also connect back to the neuron
+local topology	local_recip_frac_in	yes	share of input partners that the neuron also connects to
+local topology	local_recip_wfrac_out	yes	share of output synapses that go to reciprocated partners
+local topology	local_recip_wfrac_in	yes	share of input synapses that come from reciprocated partners
+local topology	local_log_kcore	no: removed at step 16 of 16, R² = 0.9666 from the remaining features	log(1 + core number) in the graph with direction and weights removed
+local topology	local_kcore_frac	yes	core number / number of partners (direction and weights removed)
+local topology	local_nbr_logdeg_out	yes	mean, over output partners, of the partner's log(1 + input partners + output partners)
+local topology	local_nbr_logdeg_in	yes	mean, over input partners, of the partner's log(1 + input partners + output partners)
+local topology	local_nbr_logdeg_out_sd	yes	standard deviation of the same over output partners
+local topology	local_nbr_logdeg_in_sd	yes	standard deviation of the same over input partners
+local topology	local_tri_cycle_frac	yes	directed 3-cycles through the neuron (neuron → j → k → neuron) / k(k − 1), k = number of partners with direction removed
+local topology	local_tri_trans_frac	yes	feed-forward triangles in which the neuron is the source (neuron → j → k and neuron → k) / k(k − 1)
+local topology	local_clust_coef	yes	clustering coefficient of the graph with direction removed: 2 × triangles / k(k − 1)
+local topology	local_log_tri_undirected	no: removed at step 5 of 16, R² = 0.9950 from the remaining features	log(1 + number of triangles through the neuron), direction removed

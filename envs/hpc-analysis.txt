@@ -1,0 +1,14 @@
+# HPC analysis environment, frozen 2026-09-29 with: pip freeze
+# Python 3.11.16 Linux-5.14.0-687.33.1.el9_8.x86_64-x86_64-with-glibc2.34
+cloudpickle==3.1.2
+joblib==1.6.0
+narwhals==2.26.0
+numpy==2.4.6
+packaging==26.3
+pandas==3.0.6
+pyarrow==25.0.1
+python-dateutil==2.9.0.post0
+scikit-learn==1.9.1
+scipy==1.17.1
+six==1.17.0
+threadpoolctl==3.7.0

@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.ipynb_checkpoints/
+
+# Connectome dumps and anything derived from them: large, and redownloadable.
+data/raw/*
+data/processed/*
+!data/**/.gitkeep
+
+# Experiment outputs: checkpoints, embeddings, predictions and JSON reports. The released
+# reports and predictions are archived on Zenodo (README, Data); download them here.
+experiments/*
+!experiments/.gitkeep
+
+# SGE job logs
+logs/*
+!logs/.gitkeep
+
+# macOS
+.DS_Store
+
