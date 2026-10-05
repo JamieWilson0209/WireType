@@ -95,11 +95,9 @@ malecns_v1.0/body-neurotransmitters-v1.0.feather
 - **MCNS v1.0** (Berg et al. 2026): the static download in the Google bucket
   `gs://flyem-male-cns` (landing page https://male-cns.janelia.org). Licence CC BY 4.0.
 
-**Released outputs.** WireType's prediction tables for both volumes and the paper's FAFB
-splits are on Zenodo (doi: [TBD]) under CC BY-NC 4.0; the record's description defines
-every column. A later version of the record will add the checkpoints, reports,
-embeddings, training labels and fitted probes; unpacked into `experiments/`, they let the
-analyses below run without retraining.
+**Released outputs.** The checkpoints, reports, predictions, embeddings, training labels
+and fitted probes behind the paper are archived on Zenodo (doi: [TBD]) under CC BY-NC
+4.0. Unpacked into `experiments/`, they let the analyses below run without retraining.
 
 ## Running the pipeline
 
