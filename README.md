@@ -1,5 +1,7 @@
 # WireType
 
+Related predictions, model weights and relevant data available at - https://doi.org/10.5281/zenodo.23325190
+
 The pipeline computes connectivity features for every neuron of a connectome, trains
 WireType, a transformer encoder, on one volume's transmitter labels, applies the frozen
 encoder to a second volume, and fits and scores probes on its embeddings. It reads the
